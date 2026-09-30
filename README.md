@@ -1,5 +1,7 @@
 # base_template
 
+[![Android Release](https://github.com/<owner>/<repo>/actions/workflows/android-release.yml/badge.svg)](https://github.com/<owner>/<repo>/actions/workflows/android-release.yml)
+
 A new Flutter project.
 
 ## 多环境配置（dev / test / prod）
@@ -52,9 +54,11 @@ flutter build apk --release --dart-define-from-file=env/prod.json
 
 ## Android 自动构建（GitHub Actions）
 
-仓库根 `.github/workflows/android-release.yml` 提供 Android 端自动构建与发布，产出 release 签名的 APK 与 AAB。
+`.github/workflows/android-release.yml`（本仓库中位于 `core/.github/workflows/android-release.yml`）提供 Android 端自动构建与发布，产出 release 签名的 APK 与 AAB。
 
-> 注意：仓库主托管在 Gitee（默认分支 `master`），而 GitHub Actions 只在 GitHub 上运行。需先把仓库镜像/同步推送到 GitHub，Secrets 也配在 GitHub 侧，否则工作流不会触发。
+> GitHub 仓库以 `core/` 为仓库根：本目录 README 即 GitHub 仓库首页 README，workflow 位于本目录下的 `.github/`，Flutter 工程文件（`pubspec.yaml`、`.flutter-version`、`env/`、`android/`）均在根目录。
+
+> 注意：代码主仓在 Gitee（默认分支 `master`），而 GitHub Actions 只在 GitHub 上运行。需先把 `core/` 同步推送到 GitHub，Secrets 也配在 GitHub 侧，否则工作流不会触发。
 
 ### 触发规则
 
