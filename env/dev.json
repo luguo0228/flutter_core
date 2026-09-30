@@ -1,0 +1,7 @@
+{
+  "APP_ENV": "dev",
+  "APP_NAME": "Base模板-Dev",
+  "API_BASE_URL": "https://dev-api.example.com",
+  "CDN_BASE_URL": "https://dev-cdn.example.com",
+  "DEBUG_MODE": true
+}

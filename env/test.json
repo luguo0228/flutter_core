@@ -1,0 +1,7 @@
+{
+  "APP_ENV": "test",
+  "APP_NAME": "Base模板-Test",
+  "API_BASE_URL": "https://test-api.example.com",
+  "CDN_BASE_URL": "https://test-cdn.example.com",
+  "DEBUG_MODE": true
+}
