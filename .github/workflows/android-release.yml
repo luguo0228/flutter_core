@@ -45,7 +45,9 @@ jobs:
           cache: true
 
       - name: 打印工具链版本
-        run: flutter --version
+        run: |
+          echo "锁定版本: $(cat .flutter-version)"
+          flutter --version
 
       - name: 安装依赖
         run: flutter pub get
@@ -108,7 +110,7 @@ jobs:
       - name: 兜底生成 Gradle Wrapper
         run: |
           cd android
-          [ -f gradlew ] || gradle wrapper --gradle-version 8.12 --distribution-type all
+          [ -f gradlew ] || gradle wrapper --gradle-version 8.14 --distribution-type all
           chmod +x gradlew
 
       - name: 安装依赖
