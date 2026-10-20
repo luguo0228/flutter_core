@@ -6,12 +6,18 @@ plugins {
 }
 
 val keystorePropertiesFile = rootProject.file("key.properties")
-val keystoreProperties = java.util.Properties().apply {
+val keystoreProperties: Map<String, String> =
     if (keystorePropertiesFile.exists()) {
-        keystorePropertiesFile.inputStream().use { load(it) }
+        keystorePropertiesFile.readLines()
+            .filter { it.contains('=') && !it.trimStart().startsWith("#") }
+            .associate { line ->
+                val idx = line.indexOf('=')
+                line.substring(0, idx).trim() to line.substring(idx + 1).trim()
+            }
+    } else {
+        emptyMap()
     }
-}
-fun signingValue(key: String): String? = keystoreProperties.getProperty(key)
+fun signingValue(key: String): String? = keystoreProperties[key]
 
 android {
     namespace = "com.example.base_template"
